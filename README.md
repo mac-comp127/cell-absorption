@@ -22,13 +22,22 @@ Here are the details:
 
 ## Extracting a new class
 
+This step is all about **moving existing code**. You will add very little new code.
+
+Throughout this step, it is a good idea to discuss with your neighbor. Don’t copy each other’s solution — you should make sure you are thinking it through for yourself! — but do talk through what pieces belong in which class.
+
 1. Create a new class called `Cell` (in the same package as `CellSimulation`).
 1. Study the **instance variables** in `CellSimulation`. Which should move to the new `Cell` class? In other words, which are specific to just _one_ cell, and not the _whole_ simulation? Move those instance variables to `Cell`.
-    - Hint: You will see a lot of red. That’s OK.
+    - Hint: After you move the variables, you will see a lot of red. That’s OK.
     - Hint: Don’t comment out bits as pieces as you go. Be bold! Don’t copy! Cut! If you really mess up the code, you can always use git to get back to the way it was at the last commit.
 1. Study the **methods** in `CellSimulation`. Which of those should move to the new `Cell` class? In other words, which would be a behavior or capability of a single `Cell` and not the whole simulation? Move those methods over to `Cell`.
     - Hint: Look at where the red is in your code. If a method uses an instance variable that moved to the new class, maybe that method should move too … or maybe it should use the new cell instance variable to do the job.
-    - Hint: One of the existing methods should turn into the `Cell` constructor.
+    - Hint: One of the existing methods should turn into the `Cell` constructor:
+        ```java
+        public Cell(...parameters from method you moved...) {
+            ...code from method you moved...
+        }
+        ```
 1. Some constants and helper methods will need to move to `Cell` as well.
 1. **Checkpoint:** Once you have moved everything into the new class that belongs there, you should have a `Cell` class with:
     - a constructor and
@@ -89,6 +98,8 @@ Run the code, and you should see an animation of many cells moving and growing.
 ## Commit your work again
 
 You want another snapshot of this progress.
+
+(What would be a good commit message for this commit?)
 
 ## Cell absorption!
 

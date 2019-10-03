@@ -12,16 +12,20 @@ The code has some tricky math in it — but don’t worry, you don’t need to u
 
 The bad news: you want to make _many_ cells swim around the screen, and interact with each other. But the whole program is in one big class: the cell, the window, everything, it’s all in one big class:
 
-<img src="images/step0.svg" width="400">
+<img src="images/step0.svg" width="200">
 
 You want _one_ simulation with _many_ cells. That’s going to be tricky.
 
 In this lab, you will do the following:
 
 1. Extract a new `Cell` class, so that the simulation does exactly the same thing — just one cell swimming around — but is now structured in a way that will make the change to many cells relatively easy.
+
     <img src="images/step1.svg" width="400">
+
 2. Fill the simulation with many `Cell` objects instead of just one.
+
     <img src="images/step2.svg" width="400">
+
 3. Add the absorption code and watch the cells interact.
 
 Here are the details:

@@ -48,7 +48,7 @@ public class CellSimulation {
         canvas.add(shape);
     }
 
-    public void createCell(double x, double y, double radius, Color color) {
+    private void createCell(double x, double y, double radius, Color color) {
         shape = new Ellipse(x, y, radius * 2, radius * 2);
         shape.setFillColor(color);
         this.radius = radius;
@@ -69,7 +69,7 @@ public class CellSimulation {
         shape.setCenter(previousCenter);
     }
 
-    public void moveAround(Point centerOfGravity) {
+    private void moveAround(Point centerOfGravity) {
         shape.moveBy(Math.cos(direction), Math.sin(direction));
 
         double distToCenter = shape.getCenter().distance(centerOfGravity);

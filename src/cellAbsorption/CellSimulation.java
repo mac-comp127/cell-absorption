@@ -29,9 +29,12 @@ public class CellSimulation {
 
         //noinspection InfiniteLoopStatement
         while (true) {
+            Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
+            moveAround(canvasCenter);
+            grow(0.02);
+
             canvas.draw();
             canvas.pause(10);
-            moveCell();
         }
     }
 
@@ -52,10 +55,8 @@ public class CellSimulation {
         direction = normalizeRadians(Math.random() * Math.PI * 2);
     }
 
-    private void moveCell() {
-        Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
-        move(canvasCenter);
-        setRadius(radius + 0.02);
+    private void grow(double amount) {
+        setRadius(radius + amount);
     }
 
     private void setRadius(double newRadius) {
@@ -68,7 +69,7 @@ public class CellSimulation {
         shape.setCenter(previousCenter);
     }
 
-    public void move(Point centerOfGravity) {
+    public void moveAround(Point centerOfGravity) {
         shape.moveBy(Math.cos(direction), Math.sin(direction));
 
         double distToCenter = shape.getCenter().distance(centerOfGravity);

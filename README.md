@@ -27,25 +27,25 @@ Here are the details:
     - Hint: You will see a lot of red. That’s OK.
     - Hint: Don’t comment out bits as pieces as you go. Be bold! Don’t copy! Cut! If you really mess up the code, you can always use git to get back to the way it was at the last commit.
 1. Study the **methods** in `CellSimulation`. Which of those should move to the new `Cell` class? In other words, which would be a behavior or capability of a single `Cell` and not the whole simulation? Move those methods over to `Cell`.
-    - Hint: Look at where the red is in your code. If a method uses an instance variable that moved to the new class, maybe that method should move too … or maybe it should _use_ the new
+    - Hint: Look at where the red is in your code. If a method uses an instance variable that moved to the new class, maybe that method should move too … or maybe it should use the new cell instance variable to do the job.
     - Hint: One of the existing methods should turn into the `Cell` constructor.
 1. Some constants and helper methods will need to move to `Cell` as well.
 1. **Checkpoint:** Once you have moved everything into the new class that belongs there, you should have a `Cell` class with:
     - a constructor and
     - no errors. (There will still be errors in `CellSimulation`, but not in `Cell`.)
-1. Your new class is ready to use! Now it’s time to make `CellSimulation` work again using your new class. Add a new instance variable to `CellSimulation` so that the simulation has one `Cell`:
+1. Your new class is ready to use! Now it’s time to make `CellSimulation` work again using your new class. Add a new instance variable to `CellSimulation` so that it has one `Cell`:
     ```java
     private Cell cell;
     ```
 1. Figure out where in the code you should instantiate a `Cell` and initialize your new `cell` instance variable.
     - Hint: You’ll need to change the `Cell` constructor to be `public` to use it from `CellSimulation`.
-1. Now take the other methods that have moved, and turn them into call to `cell`’s methods instead.
-    - Hint: You’ll need to make any `Cell` methods `public` that you use from `CellSimulation`.
+1. Find the remaining method calls that are red because the methods moved, and turn them into calls to `cell`’s methods.
+    - Hint: Any `Cell` methods that you use from `CellSimulation` you will need to make `public`.
     - Hint: You’ll need to add a getter for the shape so you can add it to the canvas.
 
 If you completed all of the above, there should be no errors left in your code. Run it, and if it worked, you should see … exactly what you saw before!
 
-_Phew!_ That was a lot of work! But the code doesn’t do anything different. Was it all for nothing? Not at all! You are now ready to do something that would have been really difficult before: put many cells in the simulation. Because `Cell` is an object, you can instantiate more than one. You have _decoupled_ the cell from the simulation.
+_Phew!_ That was a lot of work! But the code doesn’t do anything different. Was it all for nothing? Not at all! You are now ready to do something that would have been really difficult before: put many cells in the simulation. Because `Cell` is an object, you can instantiate more than one. You have _decoupled_ the cell from the simulation, and that opened up new possibilities.
 
 This pattern you went through is a common one in programming. First, you refactor your code — change its structure without changing what it does — to make it so that the upcoming changes make sense. Then when you make the change, it goes smoothly. The programming motto for this is:
 
@@ -57,9 +57,9 @@ Right now, before you go any further, 🚨🚨🚨 **commit your work** 🚨🚨
 
 Why is this so important? Because you made a big change, and you got to a point where your code is working again. You want to save a snapshot of this progress. If you totally mess up the next step, you can use git to go back to this snapshot and try again.
 
-> **Note:** Remember that “commit” means “make a snapshot on my computer,” and “push” means “share all my commits on GitHub.” Committing is what you do when you want a snapshot. Pushing it what you do to share in your work.
+> **Note:** Remember that “commit” means “make a snapshot on my computer,” and “push” means “share all my commits on GitHub.” Committing is what you do when you want to make a snapshot. Pushing is what you do to share your work with others.
 >
-> In this class, you have to remember to push to turn in your work. You can push as many times as you want until you are done. So go ahead and push! But remember: _if it’s not pushed, it’s not turned in._
+> In this class, you have to remember to push to turn in your work. You can push as many times as you want until you are done. So go ahead and push! But remember: committing is not pushing, and _if it’s not pushed, it’s not turned in._
 
 ## From one to many
 
@@ -80,7 +80,7 @@ private List<Cell> cells;
 Now make the code work with many cells:
 
 - Make `populateCells()` initialize `cells = new ArrayList<>()`.
-- Now take the _rest_ of `populateCells()` and put it in a do-n-times loop so that it creates 200 cells and adds them to the list.
+- Take the _rest_ of `populateCells()` and put it in a do-n-times loop so that it creates 200 cells and adds them to the list.
     - Hint: Be sure that you add the cells to the canvas _and_ the list!
 - Take the part where the cell moves and grows, and put it in a loop so that _all_ the cells move and grow.
 
@@ -142,7 +142,7 @@ Add the following code to `Cell`:
 
 This is the logic for letting one cell absorb another. You do not need to understand all the math here! However, you should be able to make sense of the logic of the `interactWith()` method. Take some time to study that.
 
-Think about how awkward this code would be if `Cell` were not its own separate class. Imagine instead that all the information about a call were a collection of loose variables you had to pass around as separate parameters: two radii, two shapes, two directions, etc. Note how giving cells behaviors like `absorb` and `setRadius` makes the code readable.
+Think about how awkward this code would be if `Cell` were not its own separate class. Imagine instead that all the information about each call were a collection of loose variables you had to pass around as separate parameters: two radii, two shapes, two directions, etc. Note how giving cells behaviors like `absorb` and `setRadius` makes the code readable. The `Cell` abstraction helps keep this code make sense.
 
 Last up, add this method to `CellSimulation` to make every cell interact with every other cell:
 
@@ -158,6 +158,6 @@ Last up, add this method to `CellSimulation` to make every cell interact with ev
     }
 ```
 
-Call `handleCellInteraction()` in the simulation’s while loop.
+Add a call to `handleCellInteraction()` in the simulation’s while loop.
 
 Run the code! You should now see the cells absorbing each other when they touch. It’s a cell-eat-cell world in the petri dish!

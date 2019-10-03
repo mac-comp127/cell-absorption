@@ -10,12 +10,18 @@ The good news: you already have code to make one cell swim around the screen! Ru
 
 The code has some tricky math in it — but don’t worry, you don’t need to understand it. It’s in well-named methods, and you can figure out what each one does and how to use it without having to understand exactly how it works. That’s the magic of abstraction!
 
-The bad news: you want to make _many_ cells swim around the screen, and interact with each other. But the whole program is in one big class: the cell, the window, everything. You want _one_ simulation with _many_ cells. That’s going to be tricky.
+The bad news: you want to make _many_ cells swim around the screen, and interact with each other. But the whole program is in one big class: the cell, the window, everything, it’s all in one big class:
+
+<img src="images/step0.svg" width="400">
+
+You want _one_ simulation with _many_ cells. That’s going to be tricky.
 
 In this lab, you will do the following:
 
 1. Extract a new `Cell` class, so that the simulation does exactly the same thing — just one cell swimming around — but is now structured in a way that will make the change to many cells relatively easy.
+    <img src="images/step1.svg" width="400">
 2. Fill the simulation with many `Cell` objects instead of just one.
+    <img src="images/step2.svg" width="400">
 3. Add the absorption code and watch the cells interact.
 
 Here are the details:
@@ -56,6 +62,8 @@ If you completed all of the above, there should be no errors left in your code. 
 
 _Phew!_ That was a lot of work! But the code doesn’t do anything different. Was it all for nothing? Not at all! You are now ready to do something that would have been really difficult before: put many cells in the simulation. Because `Cell` is an object, you can instantiate more than one. You have _decoupled_ the cell from the simulation, and that opened up new possibilities.
 
+<img src="images/step1.svg" width="400">
+
 This pattern you went through is a common one in programming. First, you refactor your code — change its structure without changing what it does — to make it so that the upcoming changes make sense. Then when you make the change, it goes smoothly. The programming motto for this is:
 
 > “Make the change easy, then make the easy change.”
@@ -85,6 +93,8 @@ private List<Cell> cells;
 ```
 
 (Note the name change: “cells” plural!)
+
+<img src="images/step2.svg" width="400">
 
 Now make the code work with many cells:
 

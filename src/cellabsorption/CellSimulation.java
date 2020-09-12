@@ -1,4 +1,4 @@
-package cellAbsorption;
+package cellabsorption;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
@@ -65,7 +65,7 @@ public class CellSimulation {
         }
         radius = newRadius;
         Point previousCenter = shape.getCenter();
-        shape.setWidthAndHeight(newRadius * 2, newRadius * 2);
+        shape.setSize(new Point(newRadius * 2, newRadius * 2));
         shape.setCenter(previousCenter);
     }
 

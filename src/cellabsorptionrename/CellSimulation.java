@@ -1,8 +1,8 @@
 package cellAbsorption;
 
-import comp127graphics.CanvasWindow;
-import comp127graphics.Ellipse;
-import comp127graphics.Point;
+import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Ellipse;
+import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 import java.util.Random;

@@ -37,10 +37,10 @@ This step is all about **moving existing code**. You will add very little new co
 Throughout this step, it is a good idea to discuss with your neighbor. Don’t copy each other’s solution — you should make sure you are thinking it through for yourself! — but do talk through what pieces belong in which class.
 
 1. Create a new class called `Cell` (in the same package as `CellSimulation`).
-1. Study the **instance variables** in `CellSimulation`. Which should move to the new `Cell` class? In other words, which are specific to just _one_ cell, and not the _whole_ simulation? Move those instance variables to `Cell`.
+2. Study the **instance variables** in `CellSimulation`. Which should move to the new `Cell` class? In other words, which are specific to just _one_ cell, and not the _whole_ simulation? Move those instance variables to `Cell`.
     - Hint: After you move the variables, you will see a lot of red. That’s OK.
     - Hint: Don’t comment out bits as pieces as you go. Be bold! Don’t copy! Cut! If you really mess up the code, you can always use git to get back to the way it was at the last commit.
-1. Study the **methods** in `CellSimulation`. Which of those should move to the new `Cell` class? In other words, which would be a behavior or capability of a single `Cell` and not the whole simulation? Move those methods over to `Cell`.
+3. Study the **methods** in `CellSimulation`. Which of those should move to the new `Cell` class? In other words, which would be a behavior or capability of a single `Cell` and not the whole simulation? Move those methods over to `Cell`.
     - Hint: Look at where the red is in your code. If a method uses an instance variable that moved to the new class, maybe that method should move too … or maybe it should use the new cell instance variable to do the job.
     - Hint: One of the existing methods should turn into the `Cell` constructor:
         ```java
@@ -48,17 +48,17 @@ Throughout this step, it is a good idea to discuss with your neighbor. Don’t c
             ...code from method you moved...
         }
         ```
-1. Some constants and helper methods will need to move to `Cell` as well.
-1. **Checkpoint:** Once you have moved everything into the new class that belongs there, you should have a `Cell` class with:
+4. Some constants and helper methods will need to move to `Cell` as well.
+5. **Checkpoint:** Once you have moved everything into the new class that belongs there, you should have a `Cell` class with:
     - a constructor and
     - no errors. (There will still be errors in `CellSimulation`, but not in `Cell`.)
-1. Your new class is ready to use! Now it’s time to make `CellSimulation` work again using your new class. Add a new instance variable to `CellSimulation` so that it has one `Cell`:
+6. Your new class is ready to use! Now it’s time to make `CellSimulation` work again using your new class. Add a new instance variable to `CellSimulation` so that it has one `Cell`:
     ```java
     private Cell cell;
     ```
-1. Figure out where in the code you should instantiate a `Cell` and initialize your new `cell` instance variable.
+7. Figure out where in the code you should instantiate a `Cell` and initialize your new `cell` instance variable.
     - Hint: You’ll need to change the `Cell` constructor to be `public` to use it from `CellSimulation`.
-1. Find the remaining method calls that are red because the methods moved, and turn them into calls to `cell`’s methods.
+8. Find the remaining method calls that are red because the methods moved, and turn them into calls to `cell`’s methods.
     - Hint: Any `Cell` methods that you use from `CellSimulation` you will need to make `public`.
     - Hint: You’ll need to add a getter for the shape so you can add it to the canvas.
 
@@ -173,16 +173,32 @@ Last up, add this method to `CellSimulation` to make every cell interact with ev
 
 ```java
     private void handleCellInteraction() {
-        for (int i = 0; i < cells.size(); i++) {
-            Cell cell0 = cells.get(i);
-            for (int j = i + 1; j < cells.size(); j++) {
-                Cell cell1 = cells.get(j);
-                // TODO: insert call here to make cell0 interact with cell1
-            }
-        }
+        // for i from 0 up to max cell index
+            // get cell at index i
+            // for j from i+1 up to max cell index
+                // get cell at index j
+                // make the two cells interact
     }
 ```
 
-Add a call to `handleCellInteraction()` in the simulation’s while loop.
+If that’s a little daunting, here’s how to do the loops:
+<details>
+  <summary>Expand for hint</summary>
+  
+  ```java
+      private void handleCellInteraction() {
+          for (int i = 0; i < cells.size(); i++) {
+              Cell cell0 = cells.get(i);
+              for (int j = i + 1; j < cells.size(); j++) {
+                  Cell cell1 = cells.get(j);
+                  // TODO: insert call here to make cell0 interact with cell1
+              }
+          }
+      }
+  ```
+</details>
+<br>
+
+Now add a call to `handleCellInteraction()` in the simulation’s while loop.
 
 Run the code! You should now see the cells absorbing each other when they touch. It’s a cell-eat-cell world in the petri dish!

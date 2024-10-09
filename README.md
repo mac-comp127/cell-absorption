@@ -103,9 +103,10 @@ private List<Cell> cells;
 Now make the code work with many cells:
 
 - Make `populateCells()` initialize `cells = new ArrayList<>()`.
-- Take the _rest_ of `populateCells()` and put it in a do-n-times loop so that it creates 200 cells and adds them to the list.
+- Take the _rest_ of `populateCells()` and put it in a do-n-times loop so that it creates 200 cells and adds all of them to the list.
     - Hint: Be sure that you add the cells to the canvas _and_ the list!
-- Take the part where the cell moves and grows, and put it in a loop so that _all_ the cells move and grow.
+- Find the different part of the code where the one cell moves and grows. Wrap that part in new a loop so that _all_ the cells move and grow.
+    - Hint: You aren’t creating any _new_ cell objects here, and you aren’t creating a _new_ list either. You are looping over an existing list of cells, and telling each cell in that list to move.
 
 Run the code, and you should see an animation of many cells moving and growing.
 

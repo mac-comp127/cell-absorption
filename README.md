@@ -184,7 +184,7 @@ Last up, add this method to `CellSimulation` to make every cell interact with ev
 
 If that’s a little daunting, here’s how to do the loops:
 <details>
-  <summary><p>🔹 Expand for hint</p></summary>
+  <summary>🔹 Expand for hint</summary>
   
   ```java
       private void handleCellInteraction() {

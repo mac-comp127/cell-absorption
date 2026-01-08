@@ -17,7 +17,7 @@
 
 ### Code Style
 
-Check these items from the [Comp 127 Style Guide](https://comp127.innig.net/resources/style-guide/):
+Check these items from the [Comp 127 Style Guide](https://comp127.macalester.digital/latest/resources/style-guide/):
 
 - [ ] all classes are in packages
 - [ ] package names start with a lowercase letter
